@@ -1,0 +1,106 @@
+
+<form class ="details"[formGroup]="detailsForm" >
+  <div style="color:white;background-color: yellowgreen;width:170px;height: 40px;text-align: center;padding-top:10px ;">UserDetails</div>
+
+<div>
+
+
+    <mat-form-field appearance="standard">
+      <mat-label>Username</mat-label>
+      <input matInput type="text" placeholder="Username" class="form-control" formControlName="username" required>
+      <mat-error>
+
+        <div class="text-danger"
+        *ngIf="(detailsForm.controls.username.touched || submitted) && detailsForm.controls.username.errors?.required">
+        
+      </div>
+    <div *ngIf="detailsForm.controls.username?.errors?.required">
+        Username is required.
+    </div>
+    <div *ngIf="detailsForm.controls.username?.errors?.minlength">
+      Username must be at least 8characters long.
+    </div>
+    <div *ngIf="detailsForm.controls.username?.errors?.pattern">
+      Username  contain only lowercase and integers combination
+  </div>
+ </mat-error>
+      
+    </mat-form-field>
+</div>
+    <br>
+   <div>
+    <mat-form-field appearance="standard">
+      <mat-label>First Name</mat-label>
+      <input matInput type="text" placeholder="First Name"class="form-control" formControlName="firstname" required>
+     <mat-error>
+    
+    
+  <div class="text-danger"
+      *ngIf="(detailsForm.controls.firstname.touched || submitted) && detailsForm.controls.firstname.errors?.required">
+      
+    </div>
+  <div *ngIf="detailsForm.controls.firstname?.errors?.required">
+      Firstname is required.
+  </div>
+  </mat-error>
+</mat-form-field>
+</div>
+  
+  <div>
+    <mat-form-field appearance="standard">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Last Name" class="form-control" formControlName="lastname" required>
+    <mat-error>
+  
+  <div class="text-danger"
+      *ngIf="(detailsForm.controls.lastname.touched || submitted) && detailsForm.controls.lastname.errors?.required">
+      
+    </div>
+  <div *ngIf="detailsForm.controls.lastname?.errors?.required">
+      Lastname is required.
+  </div>
+  </mat-error>
+  </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="standard">
+      <mat-label>Email </mat-label>
+      <input matInput placeholder="Email "class="form-control" formControlName="email" required>
+      
+    <mat-error>
+      <div class="text-danger"
+      *ngIf="(detailsForm.controls.email.touched || submitted) && detailsForm.controls.email.errors?.required">
+      
+    </div>
+  <div *ngIf="detailsForm.controls.email?.errors?.required">
+      email is required.
+  </div>
+  <div *ngIf="detailsForm.controls.email?.errors?.email && detailsForm.controls.email?.errors?.pattern">
+    email must be a valid address.
+  </div>
+    </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="standard">
+      <mat-label> Phone number  </mat-label>
+      <input matInput type="number" placeholder="Phone No:"class="form-control" formControlName="phoneno" required>
+      
+    <mat-error>
+    <div class="text-danger"
+      *ngIf="(detailsForm.controls.phoneno.touched || submitted) && detailsForm.controls.phoneno.errors?.required">
+      
+    </div>
+  <div *ngIf="detailsForm.controls.phoneno?.errors?.required">
+      Phone Number is required.
+  </div>
+<div *ngIf="detailsForm.controls.phoneno?.errors?.pattern"> 
+  Phone Number must contain 10 digits
+</div>
+    </mat-error>
+    </mat-form-field>
+  </div>
+  <br>
+  <button mat-raised-button color="primary" [disabled]="!detailsForm.valid" (click)="onSubmit()">Submit</button>
+  </form>
+
